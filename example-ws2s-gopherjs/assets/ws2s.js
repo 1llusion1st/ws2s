@@ -1,0 +1,1 @@
+../../ws2s-gopherjs/ws2s.js

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ws2s-gopherjs-example</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body onload="InitApp()"><script src="assets/ws2s.js"></script>
+<script src="assets/app.js"></script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col col-3">
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group"><span class="input-group-text">WS2S url</span><input class="form-control" type="text" id="ws2s-url-input" value="ws://127.0.0.1:3613"></div>
+                            <div class="input-group"><span class="input-group-text">TCP HOST</span><input class="form-control" type="text" id="host-input" value="127.0.0.1"></div>
+                            <div class="input-group"><span class="input-group-text">TCP PORT</span><input class="form-control" type="text" id="port-input" value="9001"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><button class="btn btn-primary" id="connect-button" type="button">CONNECT</button></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><button class="btn btn-primary" id="close-button" type="button">CLOSE</button></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><button class="btn btn-primary" id="read-button" type="button">READ</button></div>
+                    </div>
+                    <div class="input-group"><span class="input-group-text">Write</span><input class="form-control" type="text" id="input-data-input"><button class="btn btn-primary" id="send-button" type="button">SEND</button></div>
+                </form>
+            </div>
+            <div class="col">
+                <p>look also console to watch all events</p><textarea id="log-textarea" style="text-align: justify;width: 99%;height: 99%;"></textarea>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
