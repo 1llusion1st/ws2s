@@ -1,5 +1,5 @@
 build-gopherjs:
-	gopherjs build ws2s-gopherjs/main.go -o ws2s-gopherjs/ws2s.js
+	gopherjs build cmd/main.go -o ws2s-gopherjs/ws2s.js
 
 dev-run-lib-server-full:
 	cd example-ws2s-gopherjs && python -m http.server 8002

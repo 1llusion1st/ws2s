@@ -32487,15 +32487,15 @@ $packages["encoding/json"] = (function() {
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["main"] = (function() {
-	var $pkg = {}, $init, sha256, base64, json, fmt, js, time, OptionalParams, wsCommand, connection, sliceType, sliceType$1, sliceType$2, ptrType, funcType, funcType$1, ptrType$1, funcType$2, funcType$3, funcType$4, funcType$5, funcType$6, ptrType$2, chanType, chanType$1, funcType$7, connections, connId, Log, NewConnection, ReadConnection, WriteConnection, CloseConnection, init, main, hashIt;
+$packages["github.com/1llusion1st/ws2s/ws2s-gopherjs"] = (function() {
+	var $pkg = {}, $init, sha256, base64, json, fmt, js, time, OptionalParams, wsCommand, connection, sliceType, sliceType$1, sliceType$2, ptrType, funcType, funcType$1, ptrType$1, funcType$2, funcType$3, funcType$4, funcType$5, funcType$6, ptrType$2, chanType, chanType$1, funcType$7, connections, connId, Log, NewConnection, ReadConnection, WriteConnection, CloseConnection, InitLib, init, hashIt;
 	sha256 = $packages["crypto/sha256"];
 	base64 = $packages["encoding/base64"];
 	json = $packages["encoding/json"];
 	fmt = $packages["fmt"];
 	js = $packages["github.com/gopherjs/gopherjs/js"];
 	time = $packages["time"];
-	OptionalParams = $pkg.OptionalParams = $newType(0, $kindStruct, "main.OptionalParams", true, "main", true, function(Host_, Port_, SSHHost_, SSHPort_, SSHUsername_, SSHPassword_, SSHPrivateKey_, SSHPrivateKeyPassword_) {
+	OptionalParams = $pkg.OptionalParams = $newType(0, $kindStruct, "ws2s.OptionalParams", true, "github.com/1llusion1st/ws2s/ws2s-gopherjs", true, function(Host_, Port_, SSHHost_, SSHPort_, SSHUsername_, SSHPassword_, SSHPrivateKey_, SSHPrivateKeyPassword_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.Host = "";
@@ -32517,7 +32517,7 @@ $packages["main"] = (function() {
 		this.SSHPrivateKey = SSHPrivateKey_;
 		this.SSHPrivateKeyPassword = SSHPrivateKeyPassword_;
 	});
-	wsCommand = $pkg.wsCommand = $newType(0, $kindStruct, "main.wsCommand", true, "main", false, function(OptionalParams_, Command_, PlainText_, Data_) {
+	wsCommand = $pkg.wsCommand = $newType(0, $kindStruct, "ws2s.wsCommand", true, "github.com/1llusion1st/ws2s/ws2s-gopherjs", false, function(OptionalParams_, Command_, PlainText_, Data_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.OptionalParams = new OptionalParams.ptr("", 0, "", 0, "", "", "", "");
@@ -32531,7 +32531,7 @@ $packages["main"] = (function() {
 		this.PlainText = PlainText_;
 		this.Data = Data_;
 	});
-	connection = $pkg.connection = $newType(0, $kindStruct, "main.connection", true, "main", false, function(id_, ws2sServerUrl_, host_, port_, closed_, doneChan_, recvChan_, openChan_, socket_, receiving_, receivedBase64_, onConnectHandler_, onErrorHandler_) {
+	connection = $pkg.connection = $newType(0, $kindStruct, "ws2s.connection", true, "github.com/1llusion1st/ws2s/ws2s-gopherjs", false, function(id_, ws2sServerUrl_, host_, port_, closed_, doneChan_, recvChan_, openChan_, socket_, receiving_, receivedBase64_, onConnectHandler_, onErrorHandler_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.id = 0;
@@ -33003,7 +33003,10 @@ $packages["main"] = (function() {
 		/* */ } return; } var $f = {$blk: CloseConnection, $c: true, $r, $24r, $24r$1, _entry, _r, _r$1, _tuple, conn, id, ok, onCloseCallback, $s};return $f;
 	};
 	$pkg.CloseConnection = CloseConnection;
-	init = function() {
+	InitLib = function() {
+		if (!(connections === false)) {
+			return;
+		}
 		connections = {};
 		$global.hash_it = $externalize(hashIt, funcType$2);
 		$global.print_obj = $externalize((function $b(obj) {
@@ -33167,7 +33170,9 @@ $packages["main"] = (function() {
 			}), []);
 		}), funcType$1);
 	};
-	main = function() {
+	$pkg.InitLib = InitLib;
+	init = function() {
+		InitLib();
 	};
 	hashIt = function(s) {
 		var {$24r, _r, _r$1, h, s, $s, $r, $c} = $restore(this, {s});
@@ -33181,10 +33186,10 @@ $packages["main"] = (function() {
 		/* */ } return; } var $f = {$blk: hashIt, $c: true, $r, $24r, _r, _r$1, h, s, $s};return $f;
 	};
 	ptrType$2.methods = [{prop: "AsText", name: "AsText", pkg: "", typ: $funcType([], [ptrType$2], false)}, {prop: "String", name: "String", pkg: "", typ: $funcType([], [$String], false)}];
-	ptrType$1.methods = [{prop: "Connect", name: "Connect", pkg: "", typ: $funcType([], [$error], false)}, {prop: "tailConnect", name: "tailConnect", pkg: "main", typ: $funcType([], [], false)}, {prop: "onMessage", name: "onMessage", pkg: "main", typ: $funcType([ptrType], [], false)}, {prop: "onMessageBackground", name: "onMessageBackground", pkg: "main", typ: $funcType([ptrType], [], false)}, {prop: "onOpen", name: "onOpen", pkg: "main", typ: $funcType([], [], false)}, {prop: "onClose", name: "onClose", pkg: "main", typ: $funcType([], [], false)}, {prop: "onError", name: "onError", pkg: "main", typ: $funcType([ptrType], [], false)}, {prop: "Read", name: "Read", pkg: "", typ: $funcType([], [sliceType, $error], false)}, {prop: "Write", name: "Write", pkg: "", typ: $funcType([sliceType], [$Int, $error], false)}, {prop: "Close", name: "Close", pkg: "", typ: $funcType([], [$error], false)}, {prop: "close", name: "close", pkg: "main", typ: $funcType([], [], false)}, {prop: "send", name: "send", pkg: "main", typ: $funcType([wsCommand], [], false)}];
+	ptrType$1.methods = [{prop: "Connect", name: "Connect", pkg: "", typ: $funcType([], [$error], false)}, {prop: "tailConnect", name: "tailConnect", pkg: "github.com/1llusion1st/ws2s/ws2s-gopherjs", typ: $funcType([], [], false)}, {prop: "onMessage", name: "onMessage", pkg: "github.com/1llusion1st/ws2s/ws2s-gopherjs", typ: $funcType([ptrType], [], false)}, {prop: "onMessageBackground", name: "onMessageBackground", pkg: "github.com/1llusion1st/ws2s/ws2s-gopherjs", typ: $funcType([ptrType], [], false)}, {prop: "onOpen", name: "onOpen", pkg: "github.com/1llusion1st/ws2s/ws2s-gopherjs", typ: $funcType([], [], false)}, {prop: "onClose", name: "onClose", pkg: "github.com/1llusion1st/ws2s/ws2s-gopherjs", typ: $funcType([], [], false)}, {prop: "onError", name: "onError", pkg: "github.com/1llusion1st/ws2s/ws2s-gopherjs", typ: $funcType([ptrType], [], false)}, {prop: "Read", name: "Read", pkg: "", typ: $funcType([], [sliceType, $error], false)}, {prop: "Write", name: "Write", pkg: "", typ: $funcType([sliceType], [$Int, $error], false)}, {prop: "Close", name: "Close", pkg: "", typ: $funcType([], [$error], false)}, {prop: "close", name: "close", pkg: "github.com/1llusion1st/ws2s/ws2s-gopherjs", typ: $funcType([], [], false)}, {prop: "send", name: "send", pkg: "github.com/1llusion1st/ws2s/ws2s-gopherjs", typ: $funcType([wsCommand], [], false)}];
 	OptionalParams.init("", [{prop: "Host", name: "Host", embedded: false, exported: true, typ: $String, tag: "json:\"host,omitempty\""}, {prop: "Port", name: "Port", embedded: false, exported: true, typ: $Int, tag: "json:\"port,omitempty\""}, {prop: "SSHHost", name: "SSHHost", embedded: false, exported: true, typ: $String, tag: "json:\"ssh_host,omitempty\""}, {prop: "SSHPort", name: "SSHPort", embedded: false, exported: true, typ: $Int, tag: "json:\"ssh_port,omitempty\""}, {prop: "SSHUsername", name: "SSHUsername", embedded: false, exported: true, typ: $String, tag: "json:\"ssh_username,omitempty\""}, {prop: "SSHPassword", name: "SSHPassword", embedded: false, exported: true, typ: $String, tag: "json:\"ssh_password,omitempty\""}, {prop: "SSHPrivateKey", name: "SSHPrivateKey", embedded: false, exported: true, typ: $String, tag: "json:\"ssh_private_key,omitempty\""}, {prop: "SSHPrivateKeyPassword", name: "SSHPrivateKeyPassword", embedded: false, exported: true, typ: $String, tag: "json:\"ssh_private_key_password,omitempty\""}]);
 	wsCommand.init("", [{prop: "OptionalParams", name: "OptionalParams", embedded: true, exported: true, typ: OptionalParams, tag: ""}, {prop: "Command", name: "Command", embedded: false, exported: true, typ: $String, tag: "json:\"command\""}, {prop: "PlainText", name: "PlainText", embedded: false, exported: true, typ: $Bool, tag: "json:\"-\""}, {prop: "Data", name: "Data", embedded: false, exported: true, typ: $String, tag: "json:\"data,omitempty\""}]);
-	connection.init("main", [{prop: "id", name: "id", embedded: false, exported: false, typ: $Int, tag: ""}, {prop: "ws2sServerUrl", name: "ws2sServerUrl", embedded: false, exported: false, typ: $String, tag: ""}, {prop: "host", name: "host", embedded: false, exported: false, typ: $String, tag: ""}, {prop: "port", name: "port", embedded: false, exported: false, typ: $Int, tag: ""}, {prop: "closed", name: "closed", embedded: false, exported: false, typ: $Bool, tag: ""}, {prop: "doneChan", name: "doneChan", embedded: false, exported: false, typ: chanType, tag: ""}, {prop: "recvChan", name: "recvChan", embedded: false, exported: false, typ: chanType$1, tag: ""}, {prop: "openChan", name: "openChan", embedded: false, exported: false, typ: chanType, tag: ""}, {prop: "socket", name: "socket", embedded: false, exported: false, typ: ptrType, tag: ""}, {prop: "receiving", name: "receiving", embedded: false, exported: false, typ: $Bool, tag: ""}, {prop: "receivedBase64", name: "receivedBase64", embedded: false, exported: false, typ: sliceType$1, tag: ""}, {prop: "onConnectHandler", name: "onConnectHandler", embedded: false, exported: false, typ: funcType$1, tag: ""}, {prop: "onErrorHandler", name: "onErrorHandler", embedded: false, exported: false, typ: funcType$7, tag: ""}]);
+	connection.init("github.com/1llusion1st/ws2s/ws2s-gopherjs", [{prop: "id", name: "id", embedded: false, exported: false, typ: $Int, tag: ""}, {prop: "ws2sServerUrl", name: "ws2sServerUrl", embedded: false, exported: false, typ: $String, tag: ""}, {prop: "host", name: "host", embedded: false, exported: false, typ: $String, tag: ""}, {prop: "port", name: "port", embedded: false, exported: false, typ: $Int, tag: ""}, {prop: "closed", name: "closed", embedded: false, exported: false, typ: $Bool, tag: ""}, {prop: "doneChan", name: "doneChan", embedded: false, exported: false, typ: chanType, tag: ""}, {prop: "recvChan", name: "recvChan", embedded: false, exported: false, typ: chanType$1, tag: ""}, {prop: "openChan", name: "openChan", embedded: false, exported: false, typ: chanType, tag: ""}, {prop: "socket", name: "socket", embedded: false, exported: false, typ: ptrType, tag: ""}, {prop: "receiving", name: "receiving", embedded: false, exported: false, typ: $Bool, tag: ""}, {prop: "receivedBase64", name: "receivedBase64", embedded: false, exported: false, typ: sliceType$1, tag: ""}, {prop: "onConnectHandler", name: "onConnectHandler", embedded: false, exported: false, typ: funcType$1, tag: ""}, {prop: "onErrorHandler", name: "onErrorHandler", embedded: false, exported: false, typ: funcType$7, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -33197,6 +33202,21 @@ $packages["main"] = (function() {
 		connections = false;
 		connId = 0;
 		init();
+		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.$init = $init;
+	return $pkg;
+})();
+$packages["main"] = (function() {
+	var $pkg = {}, $init, ws2s, main;
+	ws2s = $packages["github.com/1llusion1st/ws2s/ws2s-gopherjs"];
+	main = function() {
+		ws2s.InitLib();
+	};
+	$init = function() {
+		$pkg.$init = function() {};
+		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		$r = ws2s.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		if ($pkg === $mainPkg) {
 			main();
 			$mainFinished = true;

@@ -1,7 +1,7 @@
 //go:build js
 // +build js
 
-package main
+package ws2s
 
 import (
 	"crypto/sha256"
@@ -314,7 +314,10 @@ func CloseConnection(id int, onCloseCallback func()) error {
 	}
 }
 
-func init() {
+func InitLib() {
+	if connections != nil {
+		return
+	}
 	connections = make(map[int]*connection)
 
 	js.Global.Set("hash_it", hashIt)
@@ -415,8 +418,8 @@ func init() {
 	})
 }
 
-func main() {
-
+func init() {
+	InitLib()
 }
 
 func hashIt(s string) []byte {
